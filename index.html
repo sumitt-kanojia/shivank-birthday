@@ -85,9 +85,24 @@
       align-items: center;
       position: relative;
       overflow: hidden;
-      padding: 6rem 0 4rem;
+      padding: 4rem 0 2rem;
     }
+    .hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.hero-image img {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 1/1; /* 👈 perfect square */
+  object-fit: cover; /* 👈 fill nicely */
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+}
     .hero::before,
     .hero::after {
       content: "";
@@ -114,6 +129,7 @@
       background: radial-gradient(circle, rgba(236,72,153,0.22), rgba(236,72,153,0.02) 64%, transparent 70%);
       animation: floatB 12s ease-in-out infinite alternate;
     }
+
 
     @keyframes floatA {
       from { transform: translateY(0) translateX(0) scale(1); }
@@ -265,16 +281,26 @@
     }
 
     .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1.35rem;
-      min-height: 220px;
-      transform: translateY(18px);
-      opacity: 0;
-      transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.35s ease;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(135deg, rgba(168,85,247,0.18), rgba(59,130,246,0.10), rgba(236,72,153,0.16));
-    }
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.35rem;
+  height: 300px; /* 👈 fixed height for clean layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(18px);
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.35s ease;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: #000; /* 👈 clean background */
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 🔥 MAIN FIX (no crop) */
+  border-radius: 1.35rem;
+}
 
     .gallery-item.is-visible {
       opacity: 1;
@@ -285,13 +311,7 @@
       box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 26px 60px rgba(0,0,0,0.40), 0 0 42px rgba(168,85,247,0.18);
     }
 
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.65s ease, filter 0.65s ease;
-    }
+  
 
     .gallery-item:hover img {
       transform: scale(1.06);
@@ -339,7 +359,6 @@
       transition: opacity 0.9s ease;
       pointer-events: none;
     }
-
     .slide.active {
       opacity: 1;
       pointer-events: auto;
@@ -348,7 +367,8 @@
     .slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      
+       object-fit: contain;
       filter: saturate(1.05) contrast(1.03);
     }
 
@@ -637,22 +657,35 @@
       </span>
       <span id="musicLabel">Music Off</span>
     </button>
+<section class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row align-items-center">
 
-    <section class="hero d-flex align-items-center">
-      <div class="container">
-        <div class="hero-inner text-center text-lg-start">
+      <!-- LEFT TEXT -->
+      <div class="col-lg-6 text-center text-lg-start">
+        <div class="hero-inner">
           <p class="eyebrow hero-reveal">A luxury birthday experience</p>
           <h1 class="hero-title hero-reveal delay-1">Happy Birthday Shivank 🎉</h1>
-          <p class="hero-copy hero-reveal delay-2 mx-auto mx-lg-0">
-            Shivank, aaj ka din sirf cake aur candles ka nahi hai, aaj teri vibe, teri dosti aur tere saath banti yaadon ka celebration hai. Tu life me aise hi glow karta reh, because real ones jaise tu hote hain, unki presence hi sab kuch brighter bana deti hai.
+          <p class="hero-copy hero-reveal delay-2">
+            Shivank, aaj ka din sirf cake aur candles ka nahi hai, aaj teri vibe, teri dosti aur tere saath banti yaadon ka celebration hai.
           </p>
-          <div class="cta-row justify-content-center justify-content-lg-start hero-reveal delay-3">
+          <div class="cta-row hero-reveal delay-3">
             <button class="btn btn-luxury" type="button" id="openSurpriseBtn">Open Surprise 🎁</button>
             <a class="btn btn-ghost" href="#gallerySection">See Memories</a>
           </div>
         </div>
       </div>
-    </section>
+
+      <!-- RIGHT IMAGE -->
+      <div class="col-lg-6 text-center mt-4 mt-lg-0">
+        <div class="hero-image">
+          <img src="pic8.jpeg" alt="Shivank">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <section id="gallerySection" class="section">
       <div class="container">
@@ -665,27 +698,27 @@
 
         <div class="gallery-grid">
           <figure class="gallery-item gallery-span-7 reveal">
-            <img src="images/pic1.jpg" alt="Birthday memory 1 for Shivank" loading="lazy" onerror="handleImageError(this)">
+            <img src="pic1.jpeg" alt="Birthday memory 1 for Shivank" loading="lazy" onerror="handleImageError(this)">
             <div class="gallery-overlay"></div>
             <figcaption class="gallery-label">Shivank Vibes</figcaption>
           </figure>
           <figure class="gallery-item gallery-span-5 reveal">
-            <img src="images/pic2.jpg" alt="Birthday memory 2 for Shivank" loading="lazy" onerror="handleImageError(this)">
+            <img src="pic2.jpeg" alt="Birthday memory 2 for Shivank" loading="lazy" onerror="handleImageError(this)">
             <div class="gallery-overlay"></div>
             <figcaption class="gallery-label">Pure Energy</figcaption>
           </figure>
           <figure class="gallery-item gallery-span-4 reveal">
-            <img src="images/pic3.jpg" alt="Birthday memory 3 for Shivank" loading="lazy" onerror="handleImageError(this)">
+            <img src="pic3.jpeg" alt="Birthday memory 3 for Shivank" loading="lazy" onerror="handleImageError(this)">
             <div class="gallery-overlay"></div>
             <figcaption class="gallery-label">Golden Moment</figcaption>
           </figure>
           <figure class="gallery-item gallery-span-4 reveal">
-            <img src="images/pic1.jpg" alt="Birthday memory 4 for Shivank" loading="lazy" onerror="handleImageError(this)">
+            <img src="pic4.jpeg" alt="Birthday memory 4 for Shivank" loading="lazy" onerror="handleImageError(this)">
             <div class="gallery-overlay"></div>
             <figcaption class="gallery-label">Warm Smile</figcaption>
           </figure>
           <figure class="gallery-item gallery-span-4 reveal">
-            <img src="images/pic2.jpg" alt="Birthday memory 5 for Shivank" loading="lazy" onerror="handleImageError(this)">
+            <img src="pic5.jpeg" alt="Birthday memory 5 for Shivank" loading="lazy" onerror="handleImageError(this)">
             <div class="gallery-overlay"></div>
             <figcaption class="gallery-label">Luxury Mood</figcaption>
           </figure>
@@ -704,21 +737,21 @@
 
         <div class="slider-shell reveal" id="sliderShell">
           <div class="slide active">
-            <img src="images/pic1.jpg" alt="Slide 1 for Shivank" loading="lazy" onerror="handleSlideError(this)">
+            <img src="pic1.jpeg" alt="Slide 1 for Shivank" loading="lazy" onerror="handleSlideError(this)">
             <div class="slide-caption">
               <div class="fw-semibold">Aaj ka spotlight tere naam</div>
               <div class="small text-white-50">Har frame me bas premium vibes.</div>
             </div>
           </div>
           <div class="slide">
-            <img src="images/pic2.jpg" alt="Slide 2 for Shivank" loading="lazy" onerror="handleSlideError(this)">
+            <img src="pic6.jpeg" alt="Slide 2 for Shivank" loading="lazy" onerror="handleSlideError(this)">
             <div class="slide-caption">
               <div class="fw-semibold">Dosti jo time ke saath aur rich hoti gayi</div>
               <div class="small text-white-50">No noise, only meaning.</div>
             </div>
           </div>
           <div class="slide">
-            <img src="images/pic3.jpg" alt="Slide 3 for Shivank" loading="lazy" onerror="handleSlideError(this)">
+            <img src="pic7.jpeg" alt="Slide 3 for Shivank" loading="lazy" onerror="handleSlideError(this)">
             <div class="slide-caption">
               <div class="fw-semibold">Memories with a glow</div>
               <div class="small text-white-50">Simple, soft, unforgettable.</div>
@@ -769,11 +802,12 @@
         </div>
         <div class="modal-body">
           <p class="mb-3" style="color: rgba(255,255,255,0.86); line-height: 1.8;">
-            Shivank, tumhari friendship ka sabse beautiful part ye hai ki usme noise kam, warmth zyada hoti hai. Aaj bas itna yaad rakh: tu genuinely special hai, aur tere around jo log hain, woh lucky hain.
+            Shivank, teri friendship ka sabse beautiful part ye hai ki usme noise kam, knowledgeable zyada hoti hai. Aaj bas itna yaad rakh: tu genuinely special hai, aur tere around jo log hain unn sabse diffrent hai tu, Mene really tere se itna kuch sikha mai bta nhi skta.
           </p>
-          <div class="p-3 rounded-4 border border-white border-opacity-10 bg-white bg-opacity-5">
+       <div class="p-3 rounded-4 border border-white border-opacity-25" 
+     style="background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);">
             <div class="fw-semibold mb-1">A small promise</div>
-            <div class="text-white-50">Jo bhi aaj wish kar raha hai, usme se sabse sincere wish meri hai: tera har saal aur refined, brighter aur happier ho.</div>
+         <div style="color: rgba(255,255,255,0.85);">: apni Life Me Success hoke jarur Milunga.</div>
           </div>
         </div>
         <div class="modal-footer border-0">
